@@ -1,0 +1,26 @@
+body {
+    /* background-color: black !important; */
+    margin: 0;
+}
+
+:root {
+    --weight-L: 300;
+    --weight-R: 400;
+    --weight-LM: 500;
+    --weight-M: 600;
+    --weight-B: 700;
+
+    --font-sec-heading: 20px;
+}
+
+.h-60 {
+    height: 60px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.gap-25 {
+    gap: 25px;
+}
