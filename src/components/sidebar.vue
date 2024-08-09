@@ -1,6 +1,13 @@
 <template>
   <div class="sidebar-cont p-3 d-flex justify-content-between">
-    <div class="sidebar-logo" :style="{ color: bindIconColor }">CL</div>
+    <div
+      class="sidebar-logo pointer"
+      :style="{ color: bindIconColor }"
+      v-b-tooltip.hover.right="'Go To Top'"
+      @click="goToTop()"
+    >
+      <img src="../assets/img/logo.svg" alt="" />
+    </div>
     <div class="list-div" v-if="!showAllIcon" @mouseenter="showAllIcon = true">
       <b-icon
         icon="list"
@@ -92,6 +99,9 @@ export default {
     goToConatiner(data) {
       document.getElementById(data).scrollIntoView({ behavior: "smooth" });
     },
+    goToTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
@@ -116,5 +126,8 @@ export default {
   .list-div {
     display: none;
   }
+}
+.bs-tooltip-right {
+  left: 8px !important;
 }
 </style>

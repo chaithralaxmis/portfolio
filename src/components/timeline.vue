@@ -6,7 +6,7 @@
       :key="index"
     >
       <div class="timeline-content">
-        <h2>{{ data.title }}</h2>
+        <h4>{{ data.title }}</h4>
         <div>
           {{ data.year }}
         </div>
@@ -61,7 +61,7 @@ export default {
   padding: 10px 40px;
   position: relative;
   background-color: inherit;
-  width: 75%;
+  width: 100%;
 }
 
 /* The circles on the timeline */
@@ -118,7 +118,7 @@ export default {
 
 /* Fix the circle for containers on the right side */
 .right::after {
-  left: -2px;
+  left: -4px;
 }
 
 /* The actual content */
@@ -133,9 +133,6 @@ export default {
 /* Media queries - Responsive timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
   /* Place the timelime to the left */
-  .timeline::after {
-    left: 31px;
-  }
 
   /* Full-width containers */
   .timeline-container {
@@ -155,7 +152,7 @@ export default {
   /* Make sure all circles are at the same spot */
   .left::after,
   .right::after {
-    left: 21px;
+    left: -3px;
   }
 
   /* Make all right containers behave like the left ones */
@@ -163,9 +160,8 @@ export default {
     left: 0%;
     padding-left: 40px;
   }
-
-  .exp-section-heading {
-    left: 6.5% !important;
+  .timeline::after {
+    left: 2%;
   }
 }
 </style>

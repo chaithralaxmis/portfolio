@@ -13,8 +13,8 @@
           <img src="../assets/img/profile1.jpg" alt="" />
           <img src="../assets/img/prodile2.jpg" alt="" />
         </div>
-        <div class="name mt-3" :style="{ color: bindIconColor }">
-          Chaithralaxmi S Shanbog
+        <div class="name mt-3 home-name" :style="{ color: bindIconColor }">
+          <img src="../assets/img/name.svg" alt="" />
         </div>
         <div
           class="mt-3 h-60"
@@ -28,8 +28,35 @@
             <span class="const"> =</span>
             <span class="type-white"> [</span> <br />
             <span class="skills"> 'HTML', 'CSS', 'Javascript', 'Vue js' </span
-            ><span class="type-white">]</span>
+            ><span class="type-white">];</span>
           </typewriter>
+        </div>
+
+        <div
+          class="d-flex justify-content-center align-items-center gap-25 mt-3"
+        >
+          <b-icon
+            icon="linkedin"
+            class="linkedin-icon"
+            font-scale="2"
+            @click="goToLinkedIn()"
+          ></b-icon>
+          <div
+            class="instagram-icon-div d-flex align-items-center justify-content-center"
+            @click="goToInstagram()"
+          >
+            <b-icon
+              icon="instagram"
+              class="instagram-icon"
+              font-scale="2"
+            ></b-icon>
+          </div>
+          <b-icon
+            @click="goToGithub()"
+            icon="github"
+            :style="{ color: bindIconColor }"
+            font-scale="2"
+          ></b-icon>
         </div>
 
         <section
@@ -167,6 +194,7 @@
           <div class="section-heading my-3">
             <b-icon icon="telegram"></b-icon> Contact
           </div>
+
           <div>
             <b-row>
               <b-col lg="6" md="6" sm="12">
@@ -176,6 +204,7 @@
                     name="name"
                     type="text"
                     placeholder="Enter name"
+                    v-model="form.name"
                   ></b-form-input>
                   <div>The one where you will tell me your name</div>
                 </b-form-group>
@@ -186,12 +215,13 @@
                 <b-form-group class="mb-4">
                   <label for="name">Email ID</label>
                   <b-form-input
-                    name="name"
+                    name="email"
                     type="text"
                     placeholder="Enter email"
+                    v-model="form.email"
                   ></b-form-input>
                   <div>
-                    The one where you will tell me how can you contact me back
+                    The one where you will tell me how can I contact you back
                   </div>
                 </b-form-group>
               </b-col>
@@ -206,6 +236,7 @@
                     placeholder="Type your message here"
                     rows="4"
                     max-rows="4"
+                    v-model="form.message"
                   ></b-form-textarea>
                   <div>
                     The one where you will tell me what I can do to help you
@@ -218,6 +249,7 @@
               :class="
                 themeColor == 'white' ? 'black-send-btn' : 'white-send-btn'
               "
+              @click="submitForm"
               >Send Message</b-button
             >
           </div>
@@ -243,6 +275,8 @@ export default {
   props: {},
   data() {
     return {
+      formUrl:
+        "https://docs.google.com/forms/d/e/1FAIpQLSeyZjailYao2-9Si0fwcajV1c4mUdGGFokJCXGsJWlb-mA3eA/viewform?embedded=true",
       themeColor: "black",
       langauges: [
         "ನನ್ನ ಭಾಷೆ ನನ್ನ ಹೆಮ್ಮೆ",
@@ -250,6 +284,11 @@ export default {
         "मैं हिंदी में बात करने की कोशिश करूंगी।",
         "Migele matrubashe konkani",
       ],
+      form: {
+        name: "",
+        email: "",
+        message: "",
+      },
       education: [
         {
           title: "Moodlakatte Institue Of Technology",
@@ -297,6 +336,54 @@ export default {
       this.themeColor = data;
       document.body.style.backgroundColor = this.themeColor;
     },
+    async submitForm() {
+      try {
+        const formData = new URLSearchParams();
+        formData.append("entry.1040639414", this.form.name); // Name field
+        formData.append("entry.1826715814", this.form.email); // Email field
+        formData.append("entry.1380458988", this.form.message); // Message field
+
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbxQjBm9ktpR5xxUaFNgxQsdUGyt28XRDUQbIF-9Rkg493yn-z6Gf-VSBfHeFcUV7I1i/exec",
+          {
+            method: "POST",
+            body: formData,
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+            },
+          }
+        );
+
+        if (response.ok) {
+          this.form = {
+            name: "",
+            email: "",
+            message: "",
+          };
+          alert("Form submitted successfully!");
+        } else {
+          const errorText = await response.text();
+          console.error("Submission failed:", errorText);
+          alert("Form submission failed.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Error submitting form.");
+      }
+    },
+    goToLinkedIn() {
+      window.open(
+        "https://www.linkedin.com/in/chaithralaxmi-s-shanbog-22b527213/"
+      );
+    },
+    goToGithub() {
+      window.open("https://github.com/chaithralaxmis?tab=repositories");
+    },
+    goToInstagram() {
+      window.open(
+        "https://www.instagram.com/chaithralaxmi_s_shanbag/?igsh=MXRvZWZkaDU0anNxbQ%3D%3D"
+      );
+    },
   },
 };
 </script>
@@ -312,6 +399,7 @@ export default {
 .contact-form-dark .form-control:focus {
   border-color: unset;
   border: 2px solid;
+  box-shadow: unset;
 }
 .contact-form-dark .form-control::placeholder {
   color: white !important;
@@ -397,6 +485,9 @@ export default {
 }
 
 @media screen and (max-width: 990px) {
+  .home-name img {
+    width: 100%;
+  }
   .about-me {
     flex-direction: column;
   }
@@ -472,5 +563,22 @@ body {
 }
 .typewriter-dark .type-white {
   color: white;
+}
+
+.linkedin-icon {
+  color: rgb(10, 102, 194);
+  background: white;
+  border-radius: 10px;
+}
+
+.instagram-icon {
+  background: rgb(225 48 108);
+  color: white;
+  border-radius: 10px;
+}
+.instagram-icon-div {
+  background: rgb(225 48 108);
+  padding: 2px;
+  border-radius: 10px;
 }
 </style>
