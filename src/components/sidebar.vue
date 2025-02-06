@@ -8,7 +8,7 @@
     >
       <img src="../assets/img/logo.svg" alt="" />
     </div>
-    <div class="list-div" v-if="!showAllIcon" @mouseenter="showAllIcon = true">
+    <div v-if="!showAllIcon" @mouseenter="showAllIcon = true">
       <b-icon
         icon="list"
         :style="{ fill: bindIconColor }"
@@ -130,4 +130,22 @@ export default {
 .bs-tooltip-right {
   left: 8px !important;
 }
+
+.list-div {
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  transform: translateX(10px); /* Starts from a little right */
+}
+
+.list-div-enter-active, .list-div-leave-active {
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.list-div-enter, .list-div-leave-to /* .list-div-leave-active in <2.1.8 */ {
+  opacity: 1;
+  transform: translateX(10); /* Final position */
+}
+
+
+
+
 </style>

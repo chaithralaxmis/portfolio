@@ -10,14 +10,28 @@
     <b-container>
       <div class="home-right">
         <div class="profile-images">
-          <img src="../assets/img/profile1.jpg" alt="" />
-          <img src="../assets/img/prodile2.jpg" alt="" />
+          <img
+            src="../assets/img/chaithralakshmi.jpg"
+            alt=""
+            class="first-img"
+          />
+
+          <img
+            src="../assets/img/chaithralakshmi2.jpg"
+            alt=""
+            class="second-img"
+          />
+          <img
+            src="../assets/img/chaithralakshmi3.jpg"
+            alt=""
+            class="second-img"
+          />
         </div>
         <div class="name mt-3 home-name" :style="{ color: bindIconColor }">
           <img src="../assets/img/name.svg" alt="" />
         </div>
         <div
-          class="mt-3 h-60"
+          class="mt-3 h-60 fs-14"
           :class="
             themeColor == 'white' ? 'typewriter-light' : 'typewriter-dark'
           "
@@ -41,7 +55,7 @@
             font-scale="2"
             @click="goToLinkedIn()"
           ></b-icon>
-          <div
+          <!-- <div
             class="instagram-icon-div d-flex align-items-center justify-content-center"
             @click="goToInstagram()"
           >
@@ -50,7 +64,7 @@
               class="instagram-icon"
               font-scale="2"
             ></b-icon>
-          </div>
+          </div> -->
           <b-icon
             @click="goToGithub()"
             icon="github"
@@ -65,13 +79,18 @@
           class="about-me mt-5 d-flex justify-content-between text-start mb-5"
           :style="{ color: bindIconColor }"
         >
-          <div class="section-heading">
+          <div
+            class="section-heading fs-14"
+            :style="{ color: bindIconBlackColor }"
+          >
             <b-icon icon="person-fill"></b-icon> ABOUT ME
           </div>
-          <div class="section-content">
-            Hello! I'm Chaithralaxmi S Shanbog, a passionate and innovative
-            Developer dedicated to creating impactful digital experiences.
-            Welcome to my portfolio website! <br />
+
+          <div class="section-content fs-14">
+            <p>Hello!</p>
+            I'm Chaithralaxmi S Shanbog, a passionate and innovative Developer
+            dedicated to creating impactful digital experiences. Welcome to my
+            portfolio website! <br />
             <br />
             This space is designed to showcase my skills, projects, and future
             aspirations. While you might notice that this particular section is
@@ -100,11 +119,14 @@
             name="work-experience"
             class="position-relative timeline-section"
           >
-            <div class="exp-section-heading">
+            <div
+              class="exp-section-heading fs-14"
+              :style="{ color: bindIconBlackColor }"
+            >
               <b-icon icon="briefcase-fill"></b-icon> WORK EXPERIENCE
             </div>
             <div class="exp-section-content">
-              <TimeLine :value="experience" />
+              <TimeLine :value="experience" :themeColor="themeColor" />
             </div>
           </section>
           <section
@@ -112,11 +134,14 @@
             name="education-details"
             class="position-relative timeline-section"
           >
-            <div class="exp-section-heading">
+            <div
+              class="exp-section-heading fs-14"
+              :style="{ color: bindIconBlackColor }"
+            >
               <b-icon icon="file-earmark-text-fill"></b-icon> EDUCATION
             </div>
             <div class="exp-section-content">
-              <TimeLine :value="education" />
+              <TimeLine :value="education" :themeColor="themeColor" />
             </div>
           </section>
         </div>
@@ -126,32 +151,44 @@
           class="mt-5 mb-5 text-start"
           :style="{ color: bindIconColor }"
         >
-          <div class="section-heading my-3">
+          <div
+            class="section-heading fs-14 my-3"
+            :style="{ color: bindIconBlackColor }"
+          >
             <b-icon icon="award-fill"></b-icon> SKILLS
           </div>
-          <div class="skill-section-content d-flex flex-wrap">
+          <div
+            class="skill-section-content d-flex flex-wrap"
+            :class="
+              this.themeColor == 'white'
+                ? ' skill-cards-light'
+                : ' skill-cards-dark'
+            "
+          >
             <div
               class="skill-card d-flex align-items-center p-2"
-              :style="{ 'border-color': bindIconColor, color: bindIconColor }"
+              :style="{ color: bindIconColor }"
             >
               <div>
-                <b-icon icon="person-fill"></b-icon>
+                <b-icon icon="award-fill"></b-icon>
               </div>
               <div>
-                <div>Web Design & Development</div>
-                <div class="mt-2">(Html, CSS, Javascript)</div>
+                <div class="skill-heading fs-14">Web Design & Development</div>
+                <div class="mt-2 skill-text fs-12">(Html, CSS, Javascript)</div>
               </div>
             </div>
             <div
               class="skill-card d-flex align-items-center p-2"
-              :style="{ 'border-color': bindIconColor, color: bindIconColor }"
+              :style="{ color: bindIconColor }"
             >
               <div>
-                <b-icon icon="person-fill"></b-icon>
+                <b-icon icon="award-fill"></b-icon>
               </div>
               <div>
-                <div>Frontend Javascript Frameworks</div>
-                <div class="mt-2">(Vue js)</div>
+                <div class="skill-heading fs-14">
+                  Frontend Javascript Frameworks
+                </div>
+                <div class="mt-2 skill-text fs-12">(Vue js)</div>
               </div>
             </div>
           </div>
@@ -162,7 +199,10 @@
           class="text-start mb-5 mt-5"
           :style="{ color: bindIconColor }"
         >
-          <div class="section-heading my-3">
+          <div
+            class="section-heading fs-14 my-3"
+            :style="{ color: bindIconBlackColor }"
+          >
             <b-icon icon="type"></b-icon> Languages
           </div>
 
@@ -170,13 +210,74 @@
             class="skill-section-content text-start"
             :style="{ color: bindIconColor }"
           >
-            <div class="mt-3">
+            <div
+              class="mt-5 language-texts fs-18"
+              :style="{ color: bindIconBlackColor }"
+            >
               <TypeWritter :dispArray="langauges" />
             </div>
-            <div :style="{ color: bindIconColor }">
+            <div :style="{ color: bindIconColor }" class="mt-5 fs-12">
               Kannada <span class="mx-2">/</span> English
               <span class="mx-2">/</span> Hindi
               <span class="mx-2">/</span> Konkani
+            </div>
+          </div>
+        </section>
+        <section
+          id="resume"
+          name="resume"
+          class="text-start mb-5 mt-5"
+          :style="{ color: bindIconColor }"
+        >
+          <div
+            class="section-heading fs-14 my-3 list-div"
+            :style="{ color: bindIconBlackColor }"
+          >
+            <b-icon icon="file-earmark-text-fill"></b-icon> Resume
+          </div>
+          <div
+            class="skill-section-content resume-section-content text-start d-flex justify-content-between list-div "
+            :style="{ color: bindIconColor }"
+          >
+            <b-overlay :show="resumeHover" class="overlay-resume">
+              <div
+                @mouseenter="resumeHover = true"
+                @mouseleave="resumeHover = false"
+                class="resume-container pointer"
+                :class="
+                  resumeHover
+                    ? 'haze-hover'
+                    : themeColor == 'white'
+                    ? 'white-resume-container'
+                    : ''
+                "
+                @click="goToHire3xResume()"
+              >
+                <img
+                  src="@/assets/img/resume1.png"
+                  alt="resume1"
+                  class="h-100"
+                />
+                <img
+                  src="@/assets/img/resume2.jpg"
+                  alt="resume2"
+                  class="h-100 resume2"
+                />
+
+                <!-- Show the arrows-fullscreen icon instead of the spinner -->
+                <b-icon
+                  :style="{ color: 'black' }"
+                  v-if="resumeHover"
+                  icon="arrows-fullscreen"
+                  class="hover-icon"
+                ></b-icon>
+              </div>
+            </b-overlay>
+
+            <div class=" resume-subtext">
+              To those HRs out there who need a more organized and minimal
+              version of my information, you can download the trusted PDF
+              version here:
             </div>
           </div>
         </section>
@@ -185,13 +286,14 @@
           name="contact"
           class="text-start mb-5 mt-5"
           :class="
-            this.themeColor == 'white'
-              ? ' contact-form-light'
-              : ' contact-form-dark'
+            themeColor == 'white' ? ' contact-form-light' : ' contact-form-dark'
           "
           :style="{ color: bindIconColor }"
         >
-          <div class="section-heading my-3">
+          <div
+            class="section-heading fs-14 my-5"
+            :style="{ color: bindIconBlackColor }"
+          >
             <b-icon icon="telegram"></b-icon> Contact
           </div>
 
@@ -199,28 +301,43 @@
             <b-row>
               <b-col lg="6" md="6" sm="12">
                 <b-form-group class="mb-4">
-                  <label for="name">Full Name</label>
+                  <label
+                    for="name"
+                    class="contact-heading fs-12"
+                    :style="{ color: bindIconBlackColor }"
+                    >Full Name</label
+                  >
                   <b-form-input
                     name="name"
                     type="text"
                     placeholder="Enter name"
                     v-model="form.name"
                   ></b-form-input>
-                  <div>The one where you will tell me your name</div>
+                  <div class="fs-10 error" v-if="$v.form.name.$dirty && !$v.form.name.required">Required</div>
+                  <div class="fs-12 mt-1" v-else>
+                    The one where you will tell me your name
+                  </div>
                 </b-form-group>
               </b-col>
             </b-row>
             <b-row>
               <b-col lg="6" md="6" sm="12">
                 <b-form-group class="mb-4">
-                  <label for="name">Email ID</label>
+                  <label
+                    for="name"
+                    class="contact-heading fs-12"
+                    :style="{ color: bindIconBlackColor }"
+                    >Email ID</label
+                  >
                   <b-form-input
                     name="email"
                     type="text"
                     placeholder="Enter email"
                     v-model="form.email"
                   ></b-form-input>
-                  <div>
+                  <div class="fs-10 error" v-if="$v.form.email.$dirty && !$v.form.email.required">Required</div>
+                  <div class="fs-10 error" v-else-if="$v.form.email.required && !$v.form.email.email">Enter proer email address</div>
+                  <div class="fs-12 mt-1" v-else >
                     The one where you will tell me how can I contact you back
                   </div>
                 </b-form-group>
@@ -229,7 +346,12 @@
             <b-row>
               <b-col lg="9" md="9" sm="12">
                 <b-form-group class="mb-4">
-                  <label for="name">Message</label>
+                  <label
+                    for="name"
+                    class="contact-heading fs-12"
+                    :style="{ color: bindIconBlackColor }"
+                    >Message</label
+                  >
                   <b-form-textarea
                     name="name"
                     type="textarea"
@@ -238,7 +360,10 @@
                     max-rows="4"
                     v-model="form.message"
                   ></b-form-textarea>
-                  <div>
+                  <div class="fs-10 error" v-if="$v.form.message.$dirty && !$v.form.message.required">
+                    Required
+                  </div>
+                  <div class="fs-12 mt-1" v-else>
                     The one where you will tell me what I can do to help you
                   </div>
                 </b-form-group>
@@ -249,6 +374,7 @@
               :class="
                 themeColor == 'white' ? 'black-send-btn' : 'white-send-btn'
               "
+              class="fs-14 cta"
               @click="submitForm"
               >Send Message</b-button
             >
@@ -263,6 +389,8 @@ import Sidebar from "../components/sidebar.vue";
 import Typewriter from "typewriter-vue";
 import TimeLine from "../components/timeline.vue";
 import TypeWritter from "@/components/TypeWritter.vue";
+import { required } from "vuelidate/lib/validators";
+import { email } from "vuelidate/lib/validators";
 export default {
   name: "Home",
   components: {
@@ -275,6 +403,7 @@ export default {
   props: {},
   data() {
     return {
+      resumeHover: false,
       formUrl:
         "https://docs.google.com/forms/d/e/1FAIpQLSeyZjailYao2-9Si0fwcajV1c4mUdGGFokJCXGsJWlb-mA3eA/viewform?embedded=true",
       themeColor: "black",
@@ -319,9 +448,22 @@ export default {
       ],
     };
   },
+  validations: {
+  
+    form:{
+
+      name: { required },
+      email: { required,email },
+      message: { required },
+    }
+    
+  },
   computed: {
     bindIconColor() {
-      return this.themeColor == "white" ? "black" : "white";
+      return this.themeColor == "white" ? "#404040" : "white";
+    },
+    bindIconBlackColor() {
+      return this.themeColor == "white" ? "#171717" : "white";
     },
   },
   watch: {},
@@ -332,43 +474,50 @@ export default {
     window.scrollTo(0, 0);
   },
   methods: {
+    goToHire3xResume() {
+      window.open("https://candidate.hire3x.com/u/Chaithralaxmi");
+    },
     themeChange(data) {
       this.themeColor = data;
       document.body.style.backgroundColor = this.themeColor;
     },
     async submitForm() {
-      try {
-        const formData = new URLSearchParams();
-        formData.append("entry.1040639414", this.form.name); // Name field
-        formData.append("entry.1826715814", this.form.email); // Email field
-        formData.append("entry.1380458988", this.form.message); // Message field
+      this.$v.$touch();
+      if (!this.$v.$invalid) {
+        try {
+          const formData = new URLSearchParams();
+          formData.append("entry.1040639414", this.form.name); // Name field
+          formData.append("entry.1826715814", this.form.email); // Email field
+          formData.append("entry.1380458988", this.form.message); // Message field
 
-        const response = await fetch(
-          "https://script.google.com/macros/s/AKfycbxQjBm9ktpR5xxUaFNgxQsdUGyt28XRDUQbIF-9Rkg493yn-z6Gf-VSBfHeFcUV7I1i/exec",
-          {
-            method: "POST",
-            body: formData,
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
+          const response = await fetch(
+            "https://script.google.com/macros/s/AKfycbxQjBm9ktpR5xxUaFNgxQsdUGyt28XRDUQbIF-9Rkg493yn-z6Gf-VSBfHeFcUV7I1i/exec",
+            {
+              method: "POST",
+              body: formData,
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+            }
+          );
+
+          if (response.ok) {
+            this.form = {
+              name: "",
+              email: "",
+              message: "",
+            };
+            alert("Form submitted successfully!");
+          } else {
+            const errorText = await response.text();
+            console.error("Submission failed:", errorText);
+            alert("Form submission failed.");
+            this.$v.$reset();
           }
-        );
-
-        if (response.ok) {
-          this.form = {
-            name: "",
-            email: "",
-            message: "",
-          };
-          alert("Form submitted successfully!");
-        } else {
-          const errorText = await response.text();
-          console.error("Submission failed:", errorText);
-          alert("Form submission failed.");
+        } catch (error) {
+          console.error("Error:", error);
+          alert("Error submitting form.");
         }
-      } catch (error) {
-        console.error("Error:", error);
-        alert("Error submitting form.");
       }
     },
     goToLinkedIn() {
@@ -391,10 +540,18 @@ export default {
 .timeline-section {
   width: 50%;
 }
+.contact-form-light .form-control {
+  border: 1.4px solid #8e8888;
+  font-size: 13px;
+}
+.form-control:focus {
+  box-shadow: unset !important;
+}
 .contact-form-dark .form-control {
   background: transparent !important;
   color: white !important;
-  border: 2px solid #4c4141;
+  border: 2px solid #e3e3e35e;
+  font-size: 13px;
 }
 .contact-form-dark .form-control:focus {
   border-color: unset;
@@ -413,16 +570,23 @@ export default {
 
 .home-right {
   width: 100%;
-  padding: 10rem 0rem;
+  padding: 8rem 0rem;
 }
 
 .profile-images {
-  height: 300px;
+  height: 250px;
 }
 
 .profile-images img {
   height: 100%;
-  width: 200px;
+  width: 160px;
+}
+.profile-images img:hover {
+  width: 226px; /* Shrink width on hover */
+  transform: scale(
+    1.1
+  ); /* Optional: slightly scale the image to make it more dynamic */
+  animation-delay: 1.5s; /* If you're using an animation with delay */
 }
 
 .const {
@@ -448,7 +612,7 @@ export default {
   font-weight: var(--weight-B);
   font-size: var(--font-sec-heading);
   /* left: 19%; */
-  left: -1%;
+  /* left: -1%; */
 }
 
 .exp-section-content {
@@ -470,21 +634,36 @@ export default {
 }
 
 .skill-card {
-  border: 1px solid;
   width: 19%;
   height: 80px;
   gap: 20px;
 }
+
+.skill-cards-light .skill-card {
+  border: 1.5px solid #8e8888 !important;
+}
+
+.skill-cards-dark .skill-card {
+  border: 2px solid #e3e3e35e !important;
+}
+
 .black-send-btn {
-  background: black !important;
+  background: #495057 !important;
   color: white !important;
+  padding: 3px 8px !important;
 }
 .white-send-btn {
   background: white !important;
   color: black !important;
+  padding: 3px 8px !important;
 }
+.resume-subtext{
+    width: 50%;
+  }
 
 @media screen and (max-width: 990px) {
+ 
+
   .home-name img {
     width: 100%;
   }
@@ -519,6 +698,15 @@ export default {
   .timeline-section {
     width: 100%;
   }
+  .overlay-resume{
+    order:1;
+  }
+  .resume-section-content{
+    flex-wrap: wrap;
+  }
+  .resume-subtext{
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -526,6 +714,8 @@ export default {
     width: 100%;
     /* Full width on screens up to 800px */
   }
+   
+  
 }
 
 @media screen and (min-width: 801px) and (max-width: 1200px) {
@@ -544,7 +734,7 @@ export default {
 
 @media screen and (min-width: 1481px) and (max-width: 1630px) {
   .skill-card {
-    width: 23%;
+    width: 24%;
     /* Four cards per row from 1481px to 1630px */
   }
 }
@@ -552,8 +742,17 @@ export default {
 /* For screens larger than 1630px */
 @media screen and (min-width: 1631px) {
   .skill-card {
-    width: 22%;
+    width: 24%;
     /* Five cards per row for screens wider than 1630px */
+  }
+}
+
+@media (max-width: 768px) {
+  .resume2{
+    display: none
+  }
+  .profile-images{
+    overflow: scroll !important
   }
 }
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;700&display=swap");
@@ -580,5 +779,147 @@ body {
   background: rgb(225 48 108);
   padding: 2px;
   border-radius: 10px;
+}
+.skill-heading {
+  font-weight: var(--weight-M);
+}
+
+.skill-text {
+  font-size: 14px;
+}
+
+.language-texts {
+  height: 30px;
+}
+.profile-images {
+  display: flex; /* Align images side by side */
+  justify-content: center; /* Center the images horizontally */
+  gap: 10px; /* Add a gap between the images */
+  width: 100%; /* Or any fixed width if required */
+  height: 400px; /* Adjust to the size of your images */
+  overflow: hidden;
+}
+
+.profile-images img {
+  height: 100%; /* Ensure images take up the container height */
+  opacity: 0; /* Initially hide the images */
+  animation: slideIn 2s forwards; /* Apply the slide-in animation */
+}
+
+.profile-images img:nth-child(2) {
+  animation-delay: 2s; /* Delay the second image by 2 seconds */
+}
+.profile-images img:nth-child(3) {
+  animation-delay: 4s; /* Delay the second image by 2 seconds */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translatey(-100%); /* Start off-screen on the left */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); /* End in the original position */
+    opacity: 1;
+  }
+}
+
+.resume-container {
+  height: 300px;
+  width: fit-content;
+}
+.haze-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background-color: #000000;
+  backdrop-filter: blur(1px);
+  opacity: 0.2;
+  border-radius: 5px;
+}
+.b-overlay,
+.b-overlay-wrap {
+  width: fit-content !important;
+}
+.b-overlay .spinner-border {
+  display: none;
+}
+.hover-icon {
+  color: black;
+  position: absolute;
+  left: 49%;
+  top: 50%;
+}
+
+.white-send-btn {
+  box-shadow: 5px 5px rgba(255, 255, 255, 0.3); /* Default shadow */
+  transform: skewX(-12deg);
+}
+.black-send-btn {
+  box-shadow: 5px 5px rgba(1, 1, 1, 0.5); /* Default shadow */
+  transform: skewX(-12deg);
+}
+
+.cta:focus {
+  outline: none;
+}
+
+.cta:hover {
+  transform: skewX(-15deg) translateY(8px) translateX(8px); /* Button raises on hover */
+  box-shadow: 0px 0px 20px rgba(105, 0, 0, 0.2); /* Shadow shrinks on hover */
+}
+
+.cta span:nth-child(2) {
+  transition: 0.5s;
+  margin-right: 0px;
+}
+
+.cta:hover span:nth-child(2) {
+  transition: 0.5s;
+  margin-right: 45px;
+}
+
+
+/**************SVG****************/
+
+path.one {
+  transition: 0.4s;
+  transform: translateX(-60%);
+}
+
+path.two {
+  transition: 0.5s;
+  transform: translateX(-30%);
+}
+
+.cta:hover path.three {
+  animation: color_anim 1s infinite 0.2s;
+}
+
+.cta:hover path.one {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.6s;
+}
+
+.cta:hover path.two {
+  transform: translateX(0%);
+  animation: color_anim 1s infinite 0.4s;
+}
+
+/* SVG animations */
+@keyframes color_anim {
+  0% {
+    fill: white;
+  }
+  50% {
+    fill: #fbc638;
+  }
+  100% {
+    fill: white;
+  }
 }
 </style>

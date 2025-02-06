@@ -6,14 +6,14 @@
       :key="index"
     >
       <div class="timeline-content">
-        <h4>{{ data.title }}</h4>
-        <div>
+        <h5 :style="{color:bindIconBlackColor}" class="fs-14 fw-600">{{ data.title }}</h5>
+        <div class="fs-12">
           {{ data.year }}
         </div>
-        <div>
+        <div class="fs-14">
           {{ data.degree }}
         </div>
-        <div>{{ data.location }}</div>
+        <div class="fs-12">{{ data.location }}</div>
       </div>
     </div>
   </div>
@@ -25,13 +25,21 @@ export default {
   mixins: [],
   props: {
     value: Array,
+    themeColor:String
   },
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+     bindIconBlackColor() {
+      return this.themeColor == "white" ? "#171717" : "white";
+    },
+  },
   watch: {},
-  mounted() {},
+  mounted() {
+    console.log(this.themeColor,"themeColorthemeColorthemeColorthemeColor");
+    
+  },
   methods: {},
 };
 </script>
